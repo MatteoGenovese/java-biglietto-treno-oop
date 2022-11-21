@@ -1,5 +1,9 @@
 package org.generation.italy;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Booking {
@@ -18,14 +22,20 @@ public class Booking {
 		System.out.print("Is date flexible: (y/n)");
 		String isDateFlexible = sc.nextLine();
 		
-		
-		System.out.println("START");
+		FileWriter myWriter = null;
+
 		
 		try {
 		
 			Ticket newTicket= new Ticket(km, age, isDateFlexible);
 			
 			System.out.println(newTicket);
+			
+			myWriter = new FileWriter("./testfile.txt",true);
+			
+
+			
+			myWriter.append(newTicket + "\n");
 
 			
 		
@@ -36,9 +46,13 @@ public class Booking {
 		}
 		finally {
 			sc.close();
+			try {
+				myWriter.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
-		
-		System.out.println("END");
+
 	}
 
 }

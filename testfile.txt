@@ -1,0 +1,12 @@
+
+km: 10
+age: 10
+price:1.68
+isFlexible:false
+ExpiringDate:2022-12-21
+
+km: 23
+age: 23
+price:5.3129997
+isFlexible:true
+ExpiringDate:2023-02-19
