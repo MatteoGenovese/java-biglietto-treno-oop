@@ -7,17 +7,23 @@ public class Booking {
 		Scanner sc= new Scanner(System.in);
 		
 		System.out.print("Insert km:");
-		int km = sc.nextInt();
+		String kmStr = sc.nextLine();
+		int km = Integer.parseInt(kmStr);
 		
 		System.out.print("Insert age:");
-		int age = sc.nextInt();
+		String ageStr = sc.nextLine();
+		int age = Integer.parseInt(ageStr);
+		
+		
+		System.out.print("Is date flexible: (y/n)");
+		String isDateFlexible = sc.nextLine();
 		
 		
 		System.out.println("START");
 		
 		try {
 		
-			Ticket newTicket= new Ticket(km, age);
+			Ticket newTicket= new Ticket(km, age, isDateFlexible);
 			
 			System.out.println(newTicket);
 
@@ -27,6 +33,9 @@ public class Booking {
 		catch (Exception e) {
 
 			System.err.println(e.getMessage());
+		}
+		finally {
+			sc.close();
 		}
 		
 		System.out.println("END");
