@@ -52,6 +52,29 @@ public class Booking {
 				e.printStackTrace();
 			}
 		}
+		
+		System.out.println("-----------------------------------");
+		
+		File f = new File("./testfile.txt");
+		Scanner fileSc = null;
+		try {
+			
+			fileSc = new Scanner(f);
+			
+			while(fileSc.hasNextLine()) {
+				
+				String line = fileSc.nextLine();
+				System.out.println(line);
+				
+			}
+			
+		} catch (FileNotFoundException e) {
+			
+			System.err.println(e.getMessage());
+		} finally {
+			
+			fileSc.close();
+		}
 
 	}
 
