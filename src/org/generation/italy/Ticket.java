@@ -22,8 +22,8 @@ public class Ticket {
 	
 	public Ticket(int km, int age, String dateFlexible) throws Exception {
 		super();
-		isValidKm(km);
-		isValidAge(age);
+		setKm(km);
+		setAge(age);
 		
 		LocalDate todayDate = LocalDate.now();
 
@@ -36,21 +36,30 @@ public class Ticket {
 		return km;
 	}
 	
-	public void isValidKm(int km) throws Exception {
+	private boolean isValidKm(int km) {
+		return km >= 0;
+	}
+	
+	public void setKm(int km) throws Exception {
 		
-		if(km<=0)
+		if(!isValidKm(km))
 		{
 			throw new Exception("Invalid Value of Km: Real number > 0 is required"); 
 		}
 		this.km = km;
 	}
 	
+	
 	public int getAge() {
 		return age;
 	}
 	
-	public void isValidAge(int age) throws Exception {
-		if(age<=0)
+	private boolean isValidAge(int age) {
+		return age >= 0;
+	}
+	
+	public void setAge(int age) throws Exception {
+		if(!isValidAge(age))
 		{
 			throw new Exception("Invalid Value of Age: Real number > 0 is required"); 
 		}
@@ -96,9 +105,8 @@ public class Ticket {
 	public float getTicketPrice() {
 		
 		float FinalPrice=getKm()*getPerKmCost().floatValue();
-		if(getAge()>65 || getAge()<18) {
+		if(getAge()>=65 || getAge()<18) {
 			FinalPrice=getTicketPriceWithDiscout(FinalPrice);
-			
 		}
 		if(isDateFlexible()==true)
 		{
